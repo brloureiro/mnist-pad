@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MNIST Classifier</title>
+  <meta name="description" content="HTML Canvas for digits recognition">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="stylesheet" href="../static/css/signature-pad.css">
+
+
+</head>
+
+<body onselectstart="return false">
+
+  <div id="signature-pad" class="signature-pad">
+    <h1>MNIST Digit Classifier</h1>
+    <div class="signature-pad--body">
+      <canvas></canvas>
+    </div>
+    <div class="signature-pad--footer">
+      <div class="description">Draw a digit from 0 to 9</div>
+
+      <div class="signature-pad--actions">
+        <div>
+          <button type="button" class="button clear" data-action="clear">Clear</button>
+          <button type="button" class="button" data-action="undo">Undo</button>
+
+        </div>
+        <div>
+          <button type="button" class="button save" data-action="save-png">Save</button>
+          <button id="upload-file-btn" type="button">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/js/signature_pad.js"></script>
+  <script src="../static/js/app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+  $(function() {
+      $('#upload-file-btn').click(function() {
+          var data = dataURLToBlob(signaturePad.toDataURL());
+      console.log("test");
+      console.log(data);
+          $.ajax({
+              type: 'POST',
+              url: '/uploadajax',
+              data: data,
+              processData: false,
+              contentType: false
+          }).done(function(data){
+            console.log('Success!');
+            window.location.replace(data.toString());
+          }).fail(function(data) {
+              console.log('Fail!');
+          });
+      });
+  });
+</script>
+
+</body>
+</html>
