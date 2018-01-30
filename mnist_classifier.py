@@ -1,6 +1,5 @@
 import sys
 from keras.models import Model, load_model
-from PIL import Image
 import numpy as np
 from cv2 import imread
 
