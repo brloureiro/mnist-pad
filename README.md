@@ -7,7 +7,7 @@ combined the Python classifier with a JS web Canvas using Flask.
 
 The model is the simplest deep neural network, a dense NN with two hidden layers (512 neurons) with 
 [ReLu activation](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) and a [softmax](https://en.wikipedia.org/wiki/Softmax_function) output. It was trained with 60000 images from the MNIST database and 
-minimizing the crossentropy using the Adam optimizer. The generalization error in the end of the training is approx. 97%.
+minimizing the crossentropy using the Adam optimizer. The accuracy is approx. 97%.
 
 The Canvas was adapted from @szimek Signature pad (https://github.com/szimek/signature_pad).
 
